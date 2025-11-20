@@ -6,7 +6,7 @@ const app = express();
 
 // Proxy all requests to your backend
 app.use("/", createProxyMiddleware({
-  target: "http://57.159.29.115:8080",
+  target: "https://rohan2by1.dev/",
   changeOrigin: true,
 }));
 
