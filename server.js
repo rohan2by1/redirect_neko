@@ -3,13 +3,15 @@ import { createProxyMiddleware } from "http-proxy-middleware";
 
 const app = express();
 
-app.use("/", createProxyMiddleware({
-  target: "http://57.159.29.115:8080",
-  changeOrigin: true,
-  ws: true // Enable WebSocket proxying
-}));
+app.use(
+  "/", 
+  createProxyMiddleware({
+    target: "https://neko.rohan2by1.dev",
+    changeOrigin: true,
+    ws: true,         // if Neko uses WebSockets
+    secure: false
+  })
+);
 
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-  console.log(`Proxy with WebSocket support running on port ${port}`);
-});
+const port = process.env.PORT || 10000;
+app.listen(port, () => console.log("Proxy running on port " + port));
